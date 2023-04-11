@@ -1,7 +1,7 @@
 {
-   "printWidth": 80,
-   "trailingComma": "es5",
-   "tabWidth": 3,
+   "printWidth": 100,
+   "trailingComma": "none",
+   "tabWidth": 2,
    "semi": true,
    "bracketSpacing": true,
    "bracketSameLine": true,
@@ -9,5 +9,5 @@
    "endOfLine": "lf",
    "arrowParens": "avoid",
    "htmlWhitespaceSensitivity": "strict",
-   "singleAttributePerLine": true
+   "singleAttributePerLine": false
 }
