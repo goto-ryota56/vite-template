@@ -7,4 +7,4 @@ components ディレクトリーの中に parts.html を作る。
 
 ## 下層ページの作り方
 
-vite.config.js の build option の input を調整する。
+**vite.config.js** の build option の **input** を調整する。
