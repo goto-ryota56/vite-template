@@ -1,71 +1,72 @@
-import { resolve } from 'path';
-import { defineConfig } from 'vite';
-import viteImagemin from 'vite-plugin-imagemin';
-import handlebars from 'vite-plugin-handlebars';
+import { resolve } from "path";
+import { defineConfig } from "vite";
+import viteImagemin from "vite-plugin-imagemin";
+import handlebars from "vite-plugin-handlebars";
 
-const root = resolve(__dirname, 'src');
-const outDir = resolve(__dirname, 'dist');
+const root = resolve(__dirname, "src");
+const outDir = resolve(__dirname, "dist");
 
 export default defineConfig({
   root,
-  base: './',
+  base: "./",
   server: {
     port: 1234,
-    open: true
+    open: true,
   },
   build: {
     outDir,
     emptyOutDir: true,
+    cssCodeSplit: true,
     modulePreload: {
-      polyfill: false
+      polyfill: false,
     },
     rollupOptions: {
       input: {
-        main: resolve(root, 'index.html'),
-        about: resolve(root, 'about/index.html')
+        main: resolve(root, "index.html"),
+        about: resolve(root, "about/index.html"),
       },
       output: {
-        assetFileNames: assetInfo => {
-          let extType = assetInfo.name.split('.').at(1);
+        assetFileNames: (assetInfo) => {
+          let extType = assetInfo.name.split(".").at(1);
           if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
-            extType = 'images';
+            extType = "images";
           }
           return `assets/${extType}/[name][extname]`;
         },
-        entryFileNames: `assets/js/bundle.js`
-      }
-    }
+        entryFileNames: `assets/js/bundle_[name].js`,
+      },
+    },
   },
   plugins: [
     handlebars({
-      partialDirectory: resolve(root, 'common/components')
+      partialDirectory: resolve(root, "common/components"),
     }),
     viteImagemin({
       gifsicle: {
         optimizationLevel: 7,
-        interlaced: false
+        interlaced: false,
       },
       optipng: {
-        optimizationLevel: 7
+        optimizationLevel: 7,
       },
       mozjpeg: {
-        quality: 20
+        quality: 20,
       },
       pngquant: {
         quality: [0.8, 0.9],
-        speed: 4
+        speed: 4,
       },
       svgo: {
         plugins: [
           {
-            name: 'removeViewBox'
+            name: "removeViewBox",
           },
           {
-            name: 'removeEmptyAttrs',
-            active: false
-          }
-        ]
-      }
-    })
-  ]
+            name: "removeEmptyAttrs",
+            active: false,
+          },
+        ],
+      },
+    }),
+  ],
 });
