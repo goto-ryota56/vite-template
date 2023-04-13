@@ -35,4 +35,5 @@ dist ディレクトリで修正はしない
 
 ### npm(gsap や swiper の使い方)
 
-使用したい js ファイルの先頭に**import gsap from "gsap"**。
+1. パッケージのインストール。ターミナルで **npm i gsap**
+2. 使用したい js ファイルの先頭に**import gsap from "gsap"**。
