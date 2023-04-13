@@ -3,10 +3,13 @@ import { defineConfig } from "vite";
 import viteImagemin from "vite-plugin-imagemin";
 import { glob } from "glob";
 import handlebars from "vite-plugin-handlebars";
+
 const root = resolve(__dirname, "src");
 const outDir = resolve(__dirname, "dist");
+
 let entries: string[] = [];
 let input = {};
+
 const getHtmls: string[] = glob.sync("./src/**/*.html", {
   ignore: ["src/common/components/*.html"],
 });
@@ -22,6 +25,7 @@ for (let entry of entries) {
   const rep = entry.replace(".html", "");
   input[rep] = resolve(root, entry);
 }
+
 export default defineConfig({
   root,
   base: "./",

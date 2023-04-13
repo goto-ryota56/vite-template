@@ -37,3 +37,9 @@ dist ディレクトリで修正はしない
 
 1. パッケージのインストール。ターミナルで **npm i gsap**
 2. 使用したい js ファイルの先頭に**import gsap from "gsap"**。
+
+## npm script
+
+- npm run dev （ローカルサーバー立ち上げ）
+- npm run preview （本番プレビュー立ち上げ）
+- npm run build （本番用 build）
