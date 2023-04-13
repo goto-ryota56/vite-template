@@ -6,16 +6,14 @@ import handlebars from "vite-plugin-handlebars";
 const root = resolve(__dirname, "src");
 const outDir = resolve(__dirname, "dist");
 let entries = [];
-let input = {
-  index2: resolve(root, ``, `index2.html`),
-};
+let input = {};
 
-const getHtml = glob.sync("./src/**/index.html", {
+const getHtml = glob.sync("./src/**/*.html", {
   ignore: ["src/common/components/*.html"],
 });
 
 getHtml.forEach((ent) => {
-  let indexDelete = ent.replace("\\index.html", "");
+  let indexDelete = ent.replace("\\*.html", "");
   let srcDelete = indexDelete.replace("src", "");
   if (srcDelete !== "") {
     srcDelete = srcDelete.replace("\\", "");
@@ -23,9 +21,10 @@ getHtml.forEach((ent) => {
   entries.push(srcDelete);
 });
 for (let entry of entries) {
-  input[`${entry}`] = resolve(root, `${entry}`, `index.html`);
+  const rep = entry.replace(".html", "");
+  console.log(entry);
+  input[`${rep}`] = resolve(root, `${entry}`);
 }
-console.log(input);
 export default defineConfig({
   root,
   base: "./",
@@ -44,7 +43,7 @@ export default defineConfig({
       input,
       output: {
         entryFileNames: () => {
-          return `assets/js/bundle_[name].js`;
+          return `assets/js/[hash].js`;
         },
         assetFileNames: (assetInfo) => {
           let extType = assetInfo.name.split(".").at(1);
@@ -53,12 +52,12 @@ export default defineConfig({
             return `assets/${extType}/[name][extname]`;
           } else if (/s?css/i.test(extType)) {
             extType = "css";
-            return `assets/${extType}/bundle_[hash].css`;
+            return `assets/${extType}/[hash].css`;
           } else {
             return `assets/${extType}/[name][extname]`;
           }
         },
-        chunkFileNames: `assets/[name].js`,
+        chunkFileNames: `assets/js/[hash].js`,
       },
     },
   },
