@@ -1,0 +1,17 @@
+@use "../../common/styles/information" as *;
+html {
+  body {
+    width: 100%;
+    background: url(/img/unsp.jpg);
+    @include break {
+      width: 60%;
+    }
+    img {
+      justify-self: 50px;
+      width: 100%;
+      @include break {
+        width: 50%;
+      }
+    }
+  }
+}

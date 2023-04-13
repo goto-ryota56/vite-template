@@ -5,13 +5,13 @@ import { glob } from "glob";
 import handlebars from "vite-plugin-handlebars";
 const root = resolve(__dirname, "src");
 const outDir = resolve(__dirname, "dist");
-let entries = [];
+let entries: string[] = [];
 let input = {};
-const getHtml = glob.sync("./src/**/*.html", {
+const getHtmls: string[] = glob.sync("./src/**/*.html", {
   ignore: ["src/common/components/*.html"],
 });
-getHtml.forEach((ent) => {
-  let indexDelete = ent.replace("\\*.html", "");
+getHtmls.forEach((getHtml) => {
+  let indexDelete = getHtml.replace("\\*.html", "");
   let srcDelete = indexDelete.replace("src", "");
   if (srcDelete !== "") {
     srcDelete = srcDelete.replace("\\", "");
@@ -43,7 +43,8 @@ export default defineConfig({
           return `assets/js/[hash].js`;
         },
         assetFileNames: (assetInfo) => {
-          let extType = assetInfo.name.split(".").at(1);
+          let extType = assetInfo.name as string;
+          extType = extType.split(".").at(1) as string;
           if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
             extType = "images";
             return `assets/${extType}/[hash][extname]`;
