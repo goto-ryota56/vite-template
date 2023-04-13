@@ -20,7 +20,7 @@ getHtmls.forEach((getHtml) => {
 });
 for (let entry of entries) {
   const rep = entry.replace(".html", "");
-  input[`${rep}`] = resolve(root, `${entry}`);
+  input[`${rep}`] = resolve(root, entry);
 }
 export default defineConfig({
   root,
