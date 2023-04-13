@@ -1,10 +1,28 @@
 import { resolve } from "path";
 import { defineConfig } from "vite";
 import viteImagemin from "vite-plugin-imagemin";
+import { glob } from "glob";
 import handlebars from "vite-plugin-handlebars";
 const root = resolve(__dirname, "src");
 const outDir = resolve(__dirname, "dist");
-const entries = ["main", "about", "recruit"];
+let entries = [];
+let input = {};
+
+const getHtml = glob.sync("./src/**/*.html", {
+  ignore: ["src/common/components/*.html"],
+});
+
+getHtml.forEach((ent) => {
+  let indexDelete = ent.replace("\\index.html", "");
+  let srcDelete = indexDelete.replace("src", "");
+  if (srcDelete !== "") {
+    srcDelete = srcDelete.replace("\\", "");
+  }
+  entries.push(srcDelete);
+});
+for (let entry of entries) {
+  input[`${entry}`] = resolve(root, `${entry}`, `index.html`);
+}
 export default defineConfig({
   root,
   base: "./",
@@ -20,27 +38,24 @@ export default defineConfig({
       polyfill: false,
     },
     rollupOptions: {
-      input: {
-        [entries[0]]: resolve(root, `index.html`),
-        [entries[1]]: resolve(root, `${entries[1]}/index.html`),
-        [entries[2]]: resolve(root, `${entries[2]}/index.html`),
-      },
+      input,
       output: {
-        assetFileNames: (assetInfo) => {
-          let extType = assetInfo.name.split(".").at(1);
-          if (/s?css/i.test(extType)) {
-            extType = "css";
-            return `assets/${extType}/bundle_[hash].css`;
-          }
-          if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
-            extType = "images";
-            return `assets/${extType}/[name][extname]`;
-          }
-          return `assets/${extType}/[name][extname]`;
-        },
         entryFileNames: () => {
           return `assets/js/bundle_[name].js`;
         },
+        assetFileNames: (assetInfo) => {
+          let extType = assetInfo.name.split(".").at(1);
+          if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
+            extType = "images";
+            return `assets/${extType}/[name][extname]`;
+          } else if (/s?css/i.test(extType)) {
+            extType = "css";
+            return `assets/${extType}/bundle_[hash].css`;
+          } else {
+            return `assets/${extType}/[name][extname]`;
+          }
+        },
+        chunkFileNames: `assets/[name].js`,
       },
     },
   },
