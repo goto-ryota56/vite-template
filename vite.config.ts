@@ -33,6 +33,9 @@ export default defineConfig({
     port: 1234,
     open: true,
   },
+  preview: {
+    port: 4321,
+  },
   build: {
     outDir,
     emptyOutDir: true,
