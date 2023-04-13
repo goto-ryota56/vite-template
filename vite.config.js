@@ -6,9 +6,11 @@ import handlebars from "vite-plugin-handlebars";
 const root = resolve(__dirname, "src");
 const outDir = resolve(__dirname, "dist");
 let entries = [];
-let input = {};
+let input = {
+  index2: resolve(root, ``, `index2.html`),
+};
 
-const getHtml = glob.sync("./src/**/*.html", {
+const getHtml = glob.sync("./src/**/index.html", {
   ignore: ["src/common/components/*.html"],
 });
 
@@ -23,6 +25,7 @@ getHtml.forEach((ent) => {
 for (let entry of entries) {
   input[`${entry}`] = resolve(root, `${entry}`, `index.html`);
 }
+console.log(input);
 export default defineConfig({
   root,
   base: "./",
