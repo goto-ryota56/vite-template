@@ -7,11 +7,9 @@ const root = resolve(__dirname, "src");
 const outDir = resolve(__dirname, "dist");
 let entries = [];
 let input = {};
-
 const getHtml = glob.sync("./src/**/*.html", {
   ignore: ["src/common/components/*.html"],
 });
-
 getHtml.forEach((ent) => {
   let indexDelete = ent.replace("\\*.html", "");
   let srcDelete = indexDelete.replace("src", "");
@@ -22,7 +20,6 @@ getHtml.forEach((ent) => {
 });
 for (let entry of entries) {
   const rep = entry.replace(".html", "");
-  console.log(entry);
   input[`${rep}`] = resolve(root, `${entry}`);
 }
 export default defineConfig({
@@ -49,12 +46,12 @@ export default defineConfig({
           let extType = assetInfo.name.split(".").at(1);
           if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
             extType = "images";
-            return `assets/${extType}/[name][extname]`;
+            return `assets/${extType}/[hash][extname]`;
           } else if (/s?css/i.test(extType)) {
             extType = "css";
             return `assets/${extType}/[hash].css`;
           } else {
-            return `assets/${extType}/[name][extname]`;
+            return `assets/${extType}/[hash][extname]`;
           }
         },
         chunkFileNames: `assets/js/[hash].js`,
