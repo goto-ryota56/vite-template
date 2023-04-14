@@ -1,6 +1,6 @@
 # Vite を活用した WEB サイト制作テンプレート
 
-<img src="./src/images/vite.png">
+![viteロゴ](./src/images/vite.png)
 
 ## インクルードの書き方
 
