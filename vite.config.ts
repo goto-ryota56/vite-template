@@ -1,9 +1,9 @@
 import { resolve } from "path";
 import { defineConfig } from "vite";
-import glsl from "vite-plugin-glsl";
-import viteImagemin from "vite-plugin-imagemin";
 import { glob } from "glob";
 import { createHtmlPlugin } from "vite-plugin-html";
+import glsl from "vite-plugin-glsl";
+import viteImagemin from "vite-plugin-imagemin";
 import handlebars from "vite-plugin-handlebars";
 
 const root = resolve(__dirname, "src");
