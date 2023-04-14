@@ -45,4 +45,5 @@ dist ディレクトリ内は触らない
 
 - npm run dev （ローカルサーバー立ち上げ）
 - npm run preview （本番プレビュー立ち上げ）
-- npm run build （本番用 build）
+- npm run build （ビルド）
+- npm run prod （ビルド 本番プレビュー）

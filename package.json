@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prod": "tsc && vite build && vite preview"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^5.0.0",
