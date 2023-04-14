@@ -43,7 +43,6 @@ dist ディレクトリ内は触らない
 
 ## npm script
 
-- npm run dev （ローカルサーバー立ち上げ）
-- npm run preview （本番プレビュー立ち上げ）
-- npm run build （ビルド）
+- npm run dev （ローカルサーバー立ち上げ　作業確認サーバー）
+- npm run build （ビルド　）
 - npm run prod （ビルド 本番プレビュー）
