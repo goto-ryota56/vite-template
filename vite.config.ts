@@ -1,5 +1,6 @@
 import { resolve } from "path";
 import { defineConfig } from "vite";
+import glsl from "vite-plugin-glsl";
 import viteImagemin from "vite-plugin-imagemin";
 import { glob } from "glob";
 import handlebars from "vite-plugin-handlebars";
@@ -97,5 +98,6 @@ export default defineConfig({
         ],
       },
     }),
+    glsl(),
   ],
 });
