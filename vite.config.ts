@@ -8,7 +8,8 @@ import viteImagemin from "vite-plugin-imagemin";
 import handlebars from "vite-plugin-handlebars";
 
 dotenv.config();
-const network = process.env.NETWORK_IP;
+let network: string | boolean | undefined = process.env.NETWORK_IP;
+network ?? (network = true);
 
 const root = resolve(__dirname, "src");
 const outDir = resolve(__dirname, "dist");
