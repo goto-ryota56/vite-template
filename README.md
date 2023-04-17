@@ -42,7 +42,7 @@ dist ディレクトリ内は触らない
 
 ## npm script
 
-- npm start （ローカルサーバー立ち上げ　作業確認サーバー）
-- npm run dev （上記同様　ローカルサーバー立ち上げ　作業確認サーバー）
-- npm run build （ビルド　）
-- npm run prod （ビルド 本番プレビュー）
+- npm start（IP で接続（スマホなど色々な端末で確認できる））
+- npm run dev （ローカルサーバー立ち上げ）
+- npm run build （ビルド）
+- npm run prod （ビルドしてから本番プレビュー）
