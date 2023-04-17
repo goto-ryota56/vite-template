@@ -2,9 +2,13 @@ import { resolve } from "path";
 import { defineConfig } from "vite";
 import { glob } from "glob";
 import { createHtmlPlugin } from "vite-plugin-html";
+import dotenv from "dotenv";
 import glsl from "vite-plugin-glsl";
 import viteImagemin from "vite-plugin-imagemin";
 import handlebars from "vite-plugin-handlebars";
+
+dotenv.config();
+const network = process.env.NETWORK_IP;
 
 const root = resolve(__dirname, "src");
 const outDir = resolve(__dirname, "dist");
@@ -33,8 +37,8 @@ export default defineConfig({
   base: "./",
   server: {
     port: 1234,
-    open: "true",
     host: true,
+    open: network,
   },
   preview: {
     port: 4321,
