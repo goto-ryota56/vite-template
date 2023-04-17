@@ -14,6 +14,10 @@ network ?? (network = true);
 const root = resolve(__dirname, "src");
 const outDir = resolve(__dirname, "dist");
 
+const now = new Date();
+const time = now.toLocaleDateString();
+const timeString = time.replace(/\//g, "");
+
 let entries: string[] = [];
 let input = {};
 
@@ -55,7 +59,7 @@ export default defineConfig({
       input,
       output: {
         entryFileNames: () => {
-          return `assets/js/[hash].js`;
+          return `assets/js/[hash]_${timeString}.js`;
         },
         assetFileNames: (assetInfo) => {
           let extType = assetInfo.name as string;
@@ -65,12 +69,12 @@ export default defineConfig({
             return `assets/${extType}/[hash][extname]`;
           } else if (/s?css/i.test(extType)) {
             extType = "css";
-            return `assets/${extType}/[hash].css`;
+            return `assets/${extType}/[hash]_${timeString}.css`;
           } else {
             return `assets/${extType}/[hash][extname]`;
           }
         },
-        chunkFileNames: `assets/js/[hash].js`,
+        chunkFileNames: `assets/js/[hash]_${timeString}.js`,
       },
     },
   },
