@@ -69,7 +69,7 @@ export default defineConfig({
             return `assets/${extType}/[hash][extname]`;
           } else if (/s?css/i.test(extType)) {
             extType = "css";
-            return `assets/${extType}/[hash]_${timeString}.css`;
+            return `assets/${extType}/[hash]_${timeString}[extname]`;
           } else {
             return `assets/${extType}/[hash][extname]`;
           }
