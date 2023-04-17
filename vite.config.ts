@@ -24,6 +24,7 @@ let input = {};
 const getHtmls: string[] = glob.sync("./src/**/*.html", {
   ignore: ["src/common/components/*.html"],
 });
+
 getHtmls.forEach((getHtml) => {
   let indexDelete = getHtml.replace("\\*.html", "");
   let srcDelete = indexDelete.replace("src", "");
@@ -32,6 +33,7 @@ getHtmls.forEach((getHtml) => {
   }
   entries.push(srcDelete);
 });
+
 for (let entry of entries) {
   const rep = entry.replace(".html", "");
   input[rep] = resolve(root, entry);
