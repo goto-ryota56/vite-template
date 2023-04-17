@@ -33,7 +33,7 @@ export default defineConfig({
   base: "./",
   server: {
     port: 1234,
-    open: "http://192.168.1.147:1234/",
+    open: "true",
     host: true,
   },
   preview: {
