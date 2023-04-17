@@ -33,7 +33,7 @@ export default defineConfig({
   base: "./",
   server: {
     port: 1234,
-    open: true,
+    open: "http://192.168.1.147:1234/",
     host: true,
   },
   preview: {
@@ -106,4 +106,3 @@ export default defineConfig({
     glsl(),
   ],
 });
-
