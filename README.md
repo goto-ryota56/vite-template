@@ -7,6 +7,10 @@
 **components ディレクトリ**の中に **parts.html** を作る。
 読み込みたい箇所に **{{> parts}}**
 
+## jQuery
+
+使いたいファイルの先頭に　**import $ from "jquery";**
+
 ## 下層ページの作り方
 
 src の中にディレクトリーを作ることで構成できる。
