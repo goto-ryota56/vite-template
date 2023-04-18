@@ -49,4 +49,5 @@ dist ディレクトリ内は触らない
 - npm start（IP で接続（スマホなど色々な端末で確認できる））
 - npm run dev （上記同様）
 - npm run build （ビルド）
-- npm run prod （ビルドしてから本番プレビュー）
+- npm run preview （本番プレビュー（build してからじゃないと更新されない））
+- npm run prod （build - preview （ショートカット））
