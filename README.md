@@ -1,4 +1,4 @@
-# Vite を活用した WEB サイト制作テンプレート
+# Vite を活用した静的サイトテンプレート
 
 ![viteロゴ](./src/images/vite.png)
 
