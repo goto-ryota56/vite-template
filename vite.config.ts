@@ -1,7 +1,6 @@
 import { resolve } from "path";
 import { defineConfig } from "vite";
 import { glob } from "glob";
-import { createHtmlPlugin } from "vite-plugin-html";
 import dotenv from "dotenv";
 import glsl from "vite-plugin-glsl";
 import viteImagemin from "vite-plugin-imagemin";
@@ -110,9 +109,6 @@ export default defineConfig({
           },
         ],
       },
-    }),
-    createHtmlPlugin({
-      minify: true,
     }),
     glsl(),
   ],
