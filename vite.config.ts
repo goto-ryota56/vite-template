@@ -60,7 +60,7 @@ export default defineConfig({
       input,
       output: {
         entryFileNames: () => {
-          return `assets/js/[hash]_${timeString}.js`;
+          return `assets/js/[hash]&${timeString}.js`;
         },
         assetFileNames: (assetInfo) => {
           let extType = assetInfo.name as string;
@@ -70,12 +70,12 @@ export default defineConfig({
             return `assets/${extType}/[hash][extname]`;
           } else if (/s?css/i.test(extType)) {
             extType = "css";
-            return `assets/${extType}/[hash]_${timeString}[extname]`;
+            return `assets/${extType}/[hash]&${timeString}[extname]`;
           } else {
             return `assets/${extType}/[hash][extname]`;
           }
         },
-        chunkFileNames: `assets/js/[hash]_${timeString}.js`,
+        chunkFileNames: `assets/js/index.js`,
       },
     },
   },
