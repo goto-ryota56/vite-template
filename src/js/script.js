@@ -6,5 +6,3 @@ document.querySelector(".aaa");
 $(".hello").on("click", function () {
   $(".world").fadeToggle();
 });
-
-console.log("hello");
